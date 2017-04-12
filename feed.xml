@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://xeushack.com/feed.xml" rel="self" type="application/atom+xml" /><link href="http://xeushack.com/" rel="alternate" type="text/html" /><updated>2017-04-12T15:26:15+05:30</updated><id>http://xeushack.com/</id><title type="html">Hacking Tutorials by Xeus</title><subtitle>Free Hacking Tutorials for the aspiring Hacker! Learn how to hack everything from Facebook accounts to WiFi passwords to webcams and much more for free!</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><entry><title type="html">How Quantum Computing Will Turn Digital Security Upside Down</title><link href="http://xeushack.com/how-quantum-computing-will-turn-digital-security-upside-down" rel="alternate" type="text/html" title="How Quantum Computing Will Turn Digital Security Upside Down" /><published>2017-04-11T16:39:25+05:30</published><updated>2017-04-11T16:39:25+05:30</updated><id>http://xeushack.com/how-quantum-computing-will-turn-digital-security-upside-down</id><content type="html" xml:base="http://xeushack.com/how-quantum-computing-will-turn-digital-security-upside-down">&lt;p&gt;You’ve probably heard some pretty grand claims about the power of quantum computers and how it will change our world. But there are a lot of misconceptions floating around. Before we focus on how quantum computing will effect digital security, let’s refresh our knowledge on what it actually is. I highly recommend you watch the following amazing explanation by &lt;a href=&quot;https://www.youtube.com/user/Kurzgesagt&quot;&gt;Kurzgesagt&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;youtube_frame&quot;&gt;
+	&lt;iframe frameborder=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;true&quot; allowtransparency=&quot;true&quot; src=&quot;https://www.youtube.com/embed/JhHMJCUmq28?start=0&amp;amp;enablejsapi=1&amp;amp;origin=http://www.xeushack.com&amp;amp;autoplay=0&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we’re going to look at how our current security systems work and how quantum computing will effect them.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-pillars-of-digital-security&quot;&gt;The Pillars of Digital Security&lt;/h2&gt;
+
+&lt;p&gt;In cryptography, specifically public-key cryptography, many security models and encryption algorithms are built on two specific math problems that are &lt;em&gt;difficult&lt;/em&gt; to solve: Integer Factorization and the Discrete Logarithm Problem.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Integer factorization&lt;/strong&gt; simply means turning a number N into two smaller numbers X and Y so that X * Y = N. For example, if I gave you the number 530453, you’d have to figure out that 530453= 581 * 913.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;strong&gt;discrete logarithm&lt;/strong&gt; problem has to do with &lt;strong&gt;modular exponentiation&lt;/strong&gt;. Modular arithmetic deals with numbers in a certain range. If you go beyond that range, it wraps back around to zero and you resume from there. Let’s consider an example.&lt;/p&gt;
+
+    &lt;p&gt;Say we want to calculate &lt;code class=&quot;highlighter-rouge&quot;&gt;(5*6) modulo 11&lt;/code&gt;, then 5 * 6 = 30, but after taking away as many 11s as you can (&lt;code class=&quot;highlighter-rouge&quot;&gt;30-11-11&lt;/code&gt;), you end up with &lt;code class=&quot;highlighter-rouge&quot;&gt;8&lt;/code&gt; instead.&lt;/p&gt;
+
+    &lt;p&gt;So, modular exponentiation uses exponentiation instead of multiplication. The discrete logarithm problem is when you’re given a number &lt;code class=&quot;highlighter-rouge&quot;&gt;N&lt;/code&gt;, a base &lt;code class=&quot;highlighter-rouge&quot;&gt;b&lt;/code&gt;, and a modulus &lt;code class=&quot;highlighter-rouge&quot;&gt;M&lt;/code&gt;, you need to find the exponent &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt;, such that b&lt;sup&gt;e&lt;/sup&gt;*mod M = N. For example, try solving 13&lt;sup&gt;e&lt;/sup&gt; mod 27 = 26.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There’s a few reasons why these two specific problems were picked to ensure the security of practically all public-key based systems, most notably SSL (HTTPS):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There are no shortcuts for solving these problems. The easiest way to solve them is the same as the hardest way to solve them. Their best case and worst case complexities are bounded to the same degree.&lt;/li&gt;
+  &lt;li&gt;Bounded how? &lt;strong&gt;Exponentially&lt;/strong&gt;. We can brute-force a solution to these problems pretty quickly for small numbers, so in cryptography we make sure these numbers are quite literally hundreds of digits long. The longer we make the numbers, the harder the above problems are to solve, the stronger the encryption is. As the numbers get larger, the problem becomes &lt;em&gt;exponentially&lt;/em&gt; harder to solve.&lt;/li&gt;
+  &lt;li&gt;Another very important thing about these problems is that they’re extremely &lt;strong&gt;difficult to solve&lt;/strong&gt; if you don’t know the answer, but once you have the answer it’s very &lt;strong&gt;easy to verify&lt;/strong&gt; that it’s correct. It would take a handful of computer cycles for the device that you’re looking at right now to multiply two large numbers, even with hundreds of digits. But it would take a supercomputer thousands of years to figure out the opposite.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The largest RSA number ever factored was a measly &lt;a href=&quot;https://en.wikipedia.org/wiki/RSA_Factoring_Challenge&quot;&gt;232 digits long&lt;/a&gt; and actually earned a prize of $200,000.&lt;/p&gt;
+
+&lt;h2 id=&quot;enter-quantum-computing&quot;&gt;Enter Quantum Computing&lt;/h2&gt;
+
+&lt;p&gt;You’d think that there are a lot of problems that fit the above criteria but there really aren’t. Almost all cryptography algorithms that are currently in use are based on variants of this problem. And it is this very problem that quantum computing can solve easily.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;shareable&quot;&gt;Quantum computing is a completely different beast&lt;/span&gt;. Certain things are possible using a quantum computer that just aren’t possible with regular computers. We can exploit these differences by using &lt;a href=&quot;https://en.wikipedia.org/wiki/Quantum_algorithm&quot;&gt;quantum algorithms&lt;/a&gt;. The algorithm that affects cryptography the most is &lt;a href=&quot;https://en.wikipedia.org/wiki/Shor's_algorithm&quot;&gt;Shor’s algorithm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Shor’s algorithm doesn’t make solving integer factorization and the discrete logarithm problem instant, but it does make solving them much, much easier. How easier? The complexity goes from exponential to polynomial. This is huge.&lt;/p&gt;
+
+&lt;p&gt;When solving the above problems with N-digit numbers, it would take a regular computer 2&lt;sup&gt;N&lt;/sup&gt; steps but a quantum computer using Shor’s algorithm can solve it in N&lt;sup&gt;2&lt;/sup&gt; steps instead. As an example:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Say, for solving the above problem for a 10-digit number, a regular computer might take ~1024 (2&lt;sup&gt;10&lt;/sup&gt;) steps but a quantum computer would only take 100 (10&lt;sup&gt;2&lt;/sup&gt;) steps.&lt;/li&gt;
+  &lt;li&gt;For 30-digit numbers, a regular computer would take over a billion steps while a quantum computer would still only need a few hundred.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As the number of digits in N goes up, the difficulty difference between regular computers and quantum computers becomes even more extreme.&lt;/p&gt;
+
+&lt;p&gt;So this is where we stand with our current number-based cryptography. To make solving these problems harder we’ve been gradually ramping up the difficulty by using larger and larger numbers. For our current regular computers this makes solving cryptographic problems &lt;em&gt;way&lt;/em&gt; harder, but for quantum computers it’s only a tiny bit harder.&lt;/p&gt;
+
+&lt;p&gt;We could make the numbers so massive that even using a quantum computer would be slow, but by then our regular computers would have a hard time just &lt;em&gt;verifying&lt;/em&gt; the results. We’re talking numbers that may be hundreds of thousands, perhaps even millions of digits long and even as this problem will become too much for normal computers, we’ll have hardly slowed down a quantum computer.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-silver-lining&quot;&gt;The Silver Lining&lt;/h2&gt;
+
+&lt;p&gt;So that’s that for public key cryptography, but what about other digital security systems?. Are all of our current systems hopelessly vulnerable to quantum computers? Thankfully, no. Quantum computers may be excellent at solving integer factorization and the discrete logarithm problem, but they’re still quite bad at attacking &lt;a href=&quot;https://en.wikipedia.org/wiki/Cryptographic_hash_function&quot;&gt;cryptographic hashes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://xeushack.com/on-hashes&quot;&gt;Hashes&lt;/a&gt; are a way of taking any amount of data, jumbling it around, then shrinking the result to a fixed-size string, a fingerprint. Just like our previous two problems, trying to solve what data went into making the fingerprint is exceptionally hard, but once you have the data, verifying that it matches the fingerprint is easy.&lt;/p&gt;
+
+&lt;p&gt;The process of trying to find the input that went into making a fingerprint is known as trying to find the hash’s &lt;strong&gt;pre-image&lt;/strong&gt;. If it’s difficult to guess the hash’s input using only the output fingerprint then the hash is said to be pre-image resistant. This is part of what lead to the disastrous &lt;a href=&quot;https://en.wikipedia.org/wiki/MD5#Preimage_vulnerability&quot;&gt;downfall of MD5&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Furthermore, the resulting fingerprints from a hash are not unique. Given the fact that a hashing algorithm takes &lt;em&gt;any&lt;/em&gt; amount of data and reduces it to a much smaller fixed size, there &lt;em&gt;are&lt;/em&gt; going to be multiple inputs which give the same fingerprint. Finding two different inputs which give the same result is known as a &lt;strong&gt;collision&lt;/strong&gt;. If it’s difficult to find any two inputs which give the same result, the hash is said to be &lt;strong&gt;collision resistant&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If a hash function is both pre-image resistant &lt;em&gt;and&lt;/em&gt; collision resistant, then quantum computers can’t solve it any easier than regular computers. And this gives us a way out: Replace our current quantum-&lt;em&gt;vulnerable&lt;/em&gt; number-based cryptography with quantum-&lt;em&gt;resistant&lt;/em&gt; hash-based cryptography. This is what needs to be done if we are to protect against the threat that quantum computers pose.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-long-do-we-have&quot;&gt;How long do we have?&lt;/h2&gt;
+
+&lt;p&gt;The solution proposed above is our best bet to gradually modify current systems with ones that can resist a quantum attack. Let’s say we’re trying to break 2048-bit RSA keys (currently, one of the most common public key cryptography techniques). What exactly would it take to do this?&lt;/p&gt;
+
+&lt;p&gt;This is very much an area of active research and as such we don’t have any concrete answers. Following are the results of two separate research studies that attempt to answer this question:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“If large quantum computers can be built, then RSA ciphers become useless. It is estimated that 2048-bit RSA keys could be broken on a quantum computer comprising &lt;strong&gt;4,000 qubits and 100 million gates&lt;/strong&gt;. Experts speculate that quantum computers of this size may be available within the next 20-30 years.” (&lt;a href=&quot;https://www.entrust.com/wp-content/uploads/2013/05/WP_QuantumCrypto_Jan09.pdf&quot;&gt;Source&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;“Quantum memory units are called qubits and the largest quantum computers capable of running Shor’s algorithm only have about 20 qubits. (A Canadian company called DWAVE has a quantum computer with 512 qubits but it has very high error rates on its qubits and is based on another principle called quantum annealing.) To run Shor’s on 2048 bit RSA would require &lt;strong&gt;at least 10,000 qubits&lt;/strong&gt;. It will probably be a while before such a machine can be built.” (&lt;a href=&quot;http://digitalcommons.csbsju.edu/cgi/viewcontent.cgi?article=1118&amp;amp;context=forum_lectures&quot;&gt;Source&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;So, the verdict is that we’re good for a few years. But quantum computing is growing faster than classical computing ever did. You can even buy a &lt;a href=&quot;http://www.wired.co.uk/article/d-wave-2000q-quantum-computer&quot;&gt;2000 qubit computer&lt;/a&gt; right now at an affordable price of $15 million. Quantum computing &lt;strong&gt;will&lt;/strong&gt; change digital security forever. The good news is we can &lt;em&gt;probably&lt;/em&gt; handle it.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="general" /><category term="security" /></entry><entry><title type="html">The Top 5 Books on Privacy and Surveillance</title><link href="http://xeushack.com/best-books-on-privacy-and-government-surveillance" rel="alternate" type="text/html" title="The Top 5 Books on Privacy and Surveillance" /><published>2017-03-22T06:39:25+05:30</published><updated>2017-03-22T06:39:25+05:30</updated><id>http://xeushack.com/best-books-on-privacy-and-government-surveillance</id><content type="html" xml:base="http://xeushack.com/best-books-on-privacy-and-government-surveillance">&lt;p&gt;As the fight for privacy wages on, it is up to each of us to decide where we stand, to decide what kind of a world we wish to live in. And that is just what we’re here to do. Following are some of the most incredible and revealing works on privacy that will show you a lot more than all those news articles you come across regularly. So let’s take a look.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-no-place-to-hide&quot;&gt;1. &lt;a href=&quot;/redirect?product=book-no-place-to-hide&quot;&gt;No Place to Hide&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/best-books-on-privacy-and-government-surveillance/no-place-to-hide.jpg&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;The lessons of courage and integrity contained within the pages of &lt;strong&gt;No Place to Hide&lt;/strong&gt;, as exemplified by Edward Snowden, Greenwald as well as the journalists, editors and publishers who supported their efforts in shining a light into the darkest corners of the most powerful government in the world, make this a &lt;strong&gt;must read&lt;/strong&gt; for any truly privacy-conscious individual. The book reads almost like a thriller, but contains a morality tale about the personal courage required of Snowden and Greenwald and his colleagues to expose government wrongdoing while risking their own lives and liberties in doing so. It is the tale that started this debate. This is easily one of the best book on privacy there is, you can find it &lt;a href=&quot;/redirect?product=book-no-place-to-hide&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-data-and-goliath&quot;&gt;2. &lt;a href=&quot;/redirect?product=book-data-and-goliath&quot;&gt;Data and Goliath&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/best-books-on-privacy-and-government-surveillance/data-and-goliath.jpg&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;When it comes to what government and business are doing together and separately with regards to personal data of everyone in the world, Bruce Schneier (the author) is as knowledgeable as it gets. &lt;strong&gt;Data and Goliath&lt;/strong&gt; exposes the many and surprising ways governments and corporations monitor all of us, making for an excellent read. Not only that, but several practical recommendations and solutions are discussed that deserve to be a part of a much-needed public debate. The cold and dark picture painted by this book seems almost &lt;em&gt;too bad to be true&lt;/em&gt; and yet it &lt;strong&gt;is&lt;/strong&gt; the world we live in. You can find this book &lt;a href=&quot;/redirect?product=book-data-and-goliath&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-war-the-rise-of-the-military-internet-complex&quot;&gt;3. &lt;a href=&quot;/redirect?product=book-rise-of-military-internet-complex&quot;&gt;@War: The Rise of the Military-Internet Complex&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/best-books-on-privacy-and-government-surveillance/rise-of-military-internet-complex.jpg&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;This book takes you deep inside the government’s surveillance and cyber operations to give an unsparing look at what the NSA and other agencies are really doing with all of our data. In the age of abstract Snowden documents, &lt;strong&gt;@War&lt;/strong&gt; actually introduces you to the people running America’s electronic spying machine, and offers invaluable insights into how their ambition and turf battles impact our financial security, our privacy, and our freedom. Get it from &lt;a href=&quot;/redirect?product=book-rise-of-military-internet-complex&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-cybersecurity-and-cyberwar&quot;&gt;4. &lt;a href=&quot;/redirect?product=book-cybersecurity-and-cyberwar&quot;&gt;Cybersecurity and Cyberwar&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/best-books-on-privacy-and-government-surveillance/cybersecurity-and-cyberwar.jpg&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;If you’re looking for something lighter yet illuminating, this is it. &lt;strong&gt;Cybersecurity and Cyberwar&lt;/strong&gt; provides an easy-to-read, yet deeply informative overview of privacy and cyberwarfare that the world has been desperately missing. Everything from the “Anonymous” hacker group to WikiLeaks to state-funded cyber warfare is discussed in depth.&lt;/p&gt;
+
+&lt;p&gt;If you’re new to the field of privacy and cyberattacks, this is the book for you. And if you think you know a lot about these topics, this is &lt;em&gt;still&lt;/em&gt; the book for you. It’s thorough, exhaustive, and extremely approachable which make this a must read for everyone. Get it &lt;a href=&quot;/redirect?product=book-cybersecurity-and-cyberwar&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-how-to-be-invisible&quot;&gt;5. &lt;a href=&quot;/redirect?product=book-how-to-be-invisible&quot;&gt;How to Be Invisible&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/best-books-on-privacy-and-government-surveillance/how-to-be-invisible.jpg&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;How do you keep yourself under the radar in an information age where anyone, anywhere, can track you down? This book addresses this question and lifts you from the depression the above books will likely give you. Meticulously researched and quite entertaining at times, &lt;strong&gt;How to Be Invisible&lt;/strong&gt; gives the smartest and most practical advice on how to stay out of sight in the real world, digitally or otherwise. This is the bible of the privacy-minded. &lt;a href=&quot;/redirect?product=book-how-to-be-invisible&quot;&gt;Get it&lt;/a&gt;. Follow it. Live it.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;So there you have it. These were without a doubt, the most informative and often quite chilling books on privacy and government surveillance. After reading these books, you’ll probably come out with a bleaker outlook of our world. So remember this. &lt;strong&gt;The power lies with us&lt;/strong&gt;. Humanity has overcome a great many obstacles and we &lt;strong&gt;will&lt;/strong&gt; overcome this, but only if you choose to fight. &lt;span class=&quot;shareable&quot;&gt;Ignorance may be bliss, but knowledge is freedom&lt;/span&gt;. &lt;strong&gt;Privacy is freedom&lt;/strong&gt;. And what better way to gain knowledge than by reading a book?&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;P.S: I’ll keep this list updated to account for any new books or editions.&lt;/em&gt;&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="books" /><category term="privacy" /></entry><entry><title type="html">Phishing With a Rogue Wi-Fi Access Point</title><link href="http://xeushack.com/phishing-with-a-rogue-wifi-access-point" rel="alternate" type="text/html" title="Phishing With a Rogue Wi-Fi Access Point" /><published>2017-03-21T19:39:25+05:30</published><updated>2017-03-21T19:39:25+05:30</updated><id>http://xeushack.com/phishing-with-a-rogue-wifi-access-point</id><content type="html" xml:base="http://xeushack.com/phishing-with-a-rogue-wifi-access-point">&lt;p&gt;Now that we’ve learnt about &lt;a href=&quot;/introduction-to-social-engineering&quot;&gt;social engineering&lt;/a&gt;, let’s put our new knowledge to work. In this tutorial, we’ll create a phishing page that’ll be served from a rogue Wi-Fi access point. If a victim then enters their details in this page, they will be delivered directly to you.&lt;/p&gt;
+
+&lt;p&gt;We’re going to be using &lt;a href=&quot;https://github.com/P0cL4bs/WiFi-Pumpkin&quot;&gt;WiFi-Pumpkin&lt;/a&gt; and &lt;a href=&quot;/using-kali&quot;&gt;Kali&lt;/a&gt; (You can also use &lt;a href=&quot;https://www.parrotsec.org&quot;&gt;ParrotSec&lt;/a&gt; or even plain Ubuntu). &lt;/p&gt;
+
+&lt;p&gt;We’ll also need an external Wi-Fi adapter. Why is that? Say you’re trying to set up this phishing page in a McDonald’s or a Starbucks. Your laptop’s internal network controller will be connected to McDonald’s Wi-Fi and your external Wi-Fi adapter will be turned into a rogue access point.&lt;/p&gt;
+
+&lt;p&gt;The external adapter will be our &lt;strong&gt;man in the middle&lt;/strong&gt; and will actually serve the phishing page into which our victim’s can then enter their details. (I strongly recommend the &lt;a href=&quot;/redirect?product=wifi-adapter-WN722N&quot;&gt;WN722N&lt;/a&gt;. It’s small and powerful, practically tailor-made for hacking and it supports every kind of WiFi attack that we’ll learn about in the next tutorials. And it’s quite cheap!)&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-install-wifi-pumpkin&quot;&gt;How to install WiFi-Pumpkin&lt;/h2&gt;
+
+&lt;p&gt;The installation is pretty straight forward.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-go-to-where-you-want-to-install-it&quot;&gt;1. Go to where you want to install it&lt;/h3&gt;
+
+&lt;p&gt;I’m going to my desktop:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd desktop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;2-get-the-source-code&quot;&gt;2. Get the source code&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/P0cL4bs/WiFi-Pumpkin.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;3-go-to-the-source-code&quot;&gt;3. Go to the source code&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd WiFi-Pumpkin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;4--install&quot;&gt;4.  Install&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./installer.sh –install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It’ll take a good 10-15 minutes while it installs all the dependencies but soon enough you should end up here:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/phishing-with-a-rogue-wifi-access-point/wifipumpkin1.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;P.S: If you run into any errors, check out the &lt;a href=&quot;https://github.com/P0cL4bs/WiFi-Pumpkin&quot;&gt;official repository&lt;/a&gt; for further instructions.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;create-the-phishing-login-page&quot;&gt;Create the phishing login page&lt;/h2&gt;
+
+&lt;p&gt;First, we need to actually build our phishing page. In a real-world scenario, you’ll probably want to do this with the login page of the website which you’re trying to get your victim’s password for. For example, if you’re trying to hack their Facebook or Twitter or Gmail, you’ll have to clone their login pages and use those.&lt;/p&gt;
+
+&lt;p&gt;Today’s browsers are pretty smart, so I can’t give you these login pages directly (otherwise this website will be blacklisted as malicious and the browser will prevent you from opening it and you wouldn’t be here reading this). However, I’ve built an example login page for you to try out which you can download &lt;a href=&quot;https://github.com/XeusHack/Fake-Login-Page/releases/download/1.0/FakeLogin.zip&quot;&gt;here&lt;/a&gt; (or clone it out of my github repo using &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone https://github.com/XeusHack/Fake-Login-Page.git&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;You’ll need to unzip these files under &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html&lt;/code&gt; directory as this is where web server files are usually stored.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-mysql&quot;&gt;Setting up MySQL&lt;/h2&gt;
+
+&lt;p&gt;Now that our fake webpage files are where they need to be, we need to actually spin up a database. &lt;strong&gt;MySQL&lt;/strong&gt; is what we’re going to use. (It comes pre-installed in Linux)&lt;/p&gt;
+
+&lt;p&gt;So let’s set up MySQL. Open up a terminal and:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql -u root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This will take you into the MySQL console. Now we need to create a database for our phishing website. You can name it anything you want:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;create database xeus
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Next, we’re going to go inside of our newly created database:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;use xeus
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We now need to create a table where our victim’s information will end up.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;create table logins(network varchar(64), email varchar(64), password varchar (64));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And we’re done (with the MySQL bit). Now we need to actually hook up our phishing page to this database.&lt;/p&gt;
+
+&lt;p&gt;Head over to &lt;code class=&quot;highlighter-rouge&quot;&gt;var/www/html&lt;/code&gt; (which is where we unzipped the fake login page) and open up the file called &lt;code class=&quot;highlighter-rouge&quot;&gt;database.php&lt;/code&gt;. You need to fill out the details in the square brackets.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$username=&quot;[USERNAME]&quot;;
+$password=&quot;[PASSWORD&quot;;
+$db_name=&quot;[DATABASE_NAME]&quot;;
+$tbl_name=&quot;[TABLE NAME]&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here’s what my file looks like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$username=&quot;root&quot;;
+$password=&quot;toor&quot;;
+$db_name=&quot;xeus&quot;;
+$tbl_name=&quot;logins&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we need to restart MySQL so that it realizes what we just did above:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo /etc/init.d/mysql restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;setting-up-wifi-pumpkin&quot;&gt;Setting up WiFi-Pumpkin&lt;/h2&gt;
+
+&lt;p&gt;Wi-Fi Pumpkin is an entire framework for rogue Wi-Fi access point attacks. It comes with numerous plugins and modules and can do a whole lot more than phishing, but we’re interested in these three specific modules: &lt;strong&gt;Rogue AP&lt;/strong&gt;, &lt;strong&gt;Phishing Manager&lt;/strong&gt; and &lt;strong&gt;DNS Spoof&lt;/strong&gt;. Using these modules we’ll connect our phishing page to the rogue access point so we can serve it to unsuspecting victim’s. So let’s start.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Open up WiFi-Pumpkin by typing &lt;code class=&quot;highlighter-rouge&quot;&gt;python wifi-pumpkin.py&lt;/code&gt; (make sure you’re in the same directory you installed WiFi-Pumpkin in). This is what it looks like:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/phishing-with-a-rogue-wifi-access-point/wifipumpkin2.png&quot; alt=&quot;Ain't she a beaut?&quot; title=&quot;Ain't she a beaut?&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;Now we need to configure some options. Go to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Settings&lt;/code&gt; tab.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set &lt;code class=&quot;highlighter-rouge&quot;&gt;Gateway&lt;/code&gt; to your router’s IP address (it’s usually &lt;code class=&quot;highlighter-rouge&quot;&gt;192.168.1.1&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Set your &lt;code class=&quot;highlighter-rouge&quot;&gt;SSID&lt;/code&gt; to something believable like “Definitely McDonalds WiFi and not a Rogue AP”&lt;/li&gt;
+  &lt;li&gt;If your rogue access point is expected to be secured (your victim is expecting to have to type in a password), you should toggle &lt;code class=&quot;highlighter-rouge&quot;&gt;Enable WiFi Security&lt;/code&gt; and enter the same expected password so that it’s more believable. If the victim does not expect to have to type in a password (like in public access points), then you don’t need to enable any security.&lt;/li&gt;
+  &lt;li&gt;Don’t forget to set your network adapter (this would be your external W-iFi adapter). It should come up as &lt;code class=&quot;highlighter-rouge&quot;&gt;wlan0&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;wlan1&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Under the &lt;code class=&quot;highlighter-rouge&quot;&gt;Plugins&lt;/code&gt; tab, uncheck “Enable Proxy Server”.&lt;/li&gt;
+  &lt;li&gt;Now open up &lt;code class=&quot;highlighter-rouge&quot;&gt;Modules&lt;/code&gt; (in the menu) and select &lt;code class=&quot;highlighter-rouge&quot;&gt;Phishing Manager&lt;/code&gt;. The IP address could be anything we like, say &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.0.1&lt;/code&gt; (the port should be 80). WiFi-Pumpkin allows you to connect your phishing page in a number of ways. We’ve already got our fake login page setup, so simply enable &lt;code class=&quot;highlighter-rouge&quot;&gt;Set Directory&lt;/code&gt; under Options and set the &lt;code class=&quot;highlighter-rouge&quot;&gt;SetEnv PATH&lt;/code&gt; to where you unzipped the files: &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/html&lt;/code&gt;. Finally, hit &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Server&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Now under &lt;code class=&quot;highlighter-rouge&quot;&gt;Modules&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;DNS Spoofer&lt;/code&gt; enable &lt;code class=&quot;highlighter-rouge&quot;&gt;Redirect traffic from all domains&lt;/code&gt;. Click &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Attack&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/phishing-with-a-rogue-wifi-access-point/wifipumpkin3.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Under the &lt;code class=&quot;highlighter-rouge&quot;&gt;View&lt;/code&gt; menu item, select &lt;code class=&quot;highlighter-rouge&quot;&gt;Monitor NetCreds&lt;/code&gt;. Click &lt;code class=&quot;highlighter-rouge&quot;&gt;Capture Logs&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And we’re done! Now when our victim connects to our rogue access point, they’ll be redirected to our phishing page. Any credentials that are entered on the phishing page will show up on our system in plain text.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;This was an extremely basic example. There are definitely better ways to do this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Our login page that we used above doesn’t look very convincing. Use a real website (like Facebook or Gmail) by downloading their login pages with &lt;a href=&quot;https://www.httrack.com/&quot;&gt;HTTrack&lt;/a&gt; or just &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Redirect only the specific page to our phishing page. For example: If the victim types in facebook.com in their browser, it should head over to our facebook phishing page. And perhaps another one for Gmail, maybe one for Twitter too. Sky’s the limit.&lt;/li&gt;
+  &lt;li&gt;Directly use the API of your targeted service (like Facebook) and when the victim types in their credentials into our website, redirect them to create a legitimate Facebook session so that the victim never realizes that they’ve been hacked.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Just a few ideas to keep you busy :)&lt;/p&gt;
+
+&lt;p&gt;But for now we must keep moving. Next up in our journey we’re going to learn how to &lt;a href=&quot;/hacking-wep&quot;&gt;hack Wi-Fi&lt;/a&gt;.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="social-engineering" /><category term="attack" /></entry><entry><title type="html">The Art of Human Hacking</title><link href="http://xeushack.com/the-art-of-human-hacking" rel="alternate" type="text/html" title="The Art of Human Hacking" /><published>2017-03-21T07:39:25+05:30</published><updated>2017-03-21T07:39:25+05:30</updated><id>http://xeushack.com/the-art-of-human-hacking</id><content type="html" xml:base="http://xeushack.com/the-art-of-human-hacking">&lt;p&gt;Now that we’ve been &lt;a href=&quot;/introduction-to-social-engineering&quot;&gt;introduced to social engineering&lt;/a&gt;, it’s time to learn about the vulnerabilities in the system we’re trying to hack into: humans.&lt;/p&gt;
+
+&lt;p&gt;Social engineering is all about making someone do something that they’re not supposed to do. Like the hacker who &lt;a href=&quot;https://www.wired.com/2015/10/hacker-who-broke-into-cia-director-john-brennan-email-tells-how-he-did-it/&quot;&gt;posed as a Verizon employee and broke into the CIA director’s email&lt;/a&gt;. Or the guy who &lt;a href=&quot;https://www.independent.co.uk/news/world/europe/thief-woos-bank-staff-with-chocolates-then-steals-diamonds-worth-16314m-5332414.html&quot;&gt;charmed his way into a bank vault and made off with $28 million worth of gems&lt;/a&gt;. Or the true story behind the movie &lt;a href=&quot;https://en.wikipedia.org/wiki/Catch_Me_If_You_Can&quot;&gt;Catch Me If You Can&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;youtube_frame&quot;&gt;
+	&lt;iframe frameborder=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;true&quot; allowtransparency=&quot;true&quot; src=&quot;https://www.youtube.com/embed/xas1UyTiVUw?start=0&amp;amp;enablejsapi=1&amp;amp;origin=http://www.xeushack.com&amp;amp;autoplay=0&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;There are weaknesses in every system and humans are no exception. So let’s take a look at a few of our behaviors and tendencies that leave us open to attack. &lt;span class=&quot;shareable&quot;&gt;Hold on to your faith in humanity, it’s about to be tested.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-greed&quot;&gt;#1 Greed&lt;/h3&gt;
+
+&lt;p&gt;One of the most commonly exploited human weaknesses in social engineering is greed: &lt;em&gt;offer people something they want&lt;/em&gt;. You’ve probably come across emails like this one in your spam folder:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/the-art-of-human-hacking/greed.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;This is one of the most common types of phishing attacks. The attacker is preying on the greed of the victim. There are hundreds of variations of these kinds of attacks but they all have one thing in common: the attacker promises the victim a large sum of money in exchange for some basic details like name, age and phone number. Once the attacker obstains this, they then ask for the victim’s financial information or even try to get them to pay up directly.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;shareable&quot;&gt;Greed is a weakness that makes us all vulnerable&lt;/span&gt;. If you were thinking these types of attacks don’t happen anymore, &lt;a href=&quot;https://securelist.com/analysis/quarterly-spam-reports/76570/spam-and-phishing-in-q3-2016/&quot;&gt;think again&lt;/a&gt;. Each year, hundreds of millions of phishing emails are sent out. Of course, they are only successful against victims who are quite gullible but the numbers are on the attacker’s side. Only one out of hundreds or thousands of victims need to comply and the attacker’s endeavor can turn out to be quite profitable.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-fear&quot;&gt;#2 Fear&lt;/h3&gt;
+
+&lt;p&gt;Another weakness is fear. Fear can take on many forms…&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/the-art-of-human-hacking/fear1.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;The above type of attack is getting more and more common given the recent data breaches. The attacker claims to have some very private information that he is threatening to leak unless the victim pays up. Following the Ashley Madison hack of 2015, thousands of victims received emails &lt;a href=&quot;http://www.businessinsider.in/An-Ashley-Madison-user-received-a-terrifying-blackmail-letter/articleshow/50687581.cms&quot;&gt;blackmailing the victims&lt;/a&gt; to hand over some bitcoins or their deepest and darkest secrets will be exposed. It is believed that the attackers made off with hundreds of thousands of dollars.&lt;/p&gt;
+
+&lt;p&gt;And then there’s this…&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/the-art-of-human-hacking/fear2.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;The chat screenshot you see above is the actual conversation between the attacker and his victim from this &lt;a href=&quot;https://archives.fbi.gov/archives/losangeles/press-releases/2013/temecula-student-arrested-in-sextortion-case-involving-multiple-victims&quot;&gt;FBI report&lt;/a&gt;. The hacker, who was eventually charged with &lt;em&gt;sextortion&lt;/em&gt;, broke into several girl’s computers (including &lt;a href=&quot;http://www.dailymail.co.uk/news/article-2638874/More-90-people-nabbed-creepware-hacker-sting-victim-Miss-Teen-USA-describes-terror-watched-webcam-YEAR.html&quot;&gt;Miss Teen USA&lt;/a&gt;) and tried to blackmail them. The &lt;strong&gt;fear&lt;/strong&gt; of embarrassment lead dozens of his victims to comply.&lt;/p&gt;
+
+&lt;p&gt;Fear can indeed be a powerful tool and wreak havoc in the hands of a malicious attacker.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-urgency&quot;&gt;#3 Urgency&lt;/h3&gt;
+
+&lt;p&gt;Let’s take a look at the above image once more. In particular, the last line:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/the-art-of-human-hacking/urgency.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;The attacker is threatening the victim to act within 48 hours or their private data will be leaked. Setting a time limit on the threat puts it into very real terms from the point of view of the victim. If they truly believe that they must obey &lt;strong&gt;now&lt;/strong&gt;, they may not act rationally and give in to the demands that they otherwise wouldn’t have.&lt;/p&gt;
+
+&lt;p&gt;It isn’t just hackers though, the sense of urgency is actively exploited by companies and marketers to make you buy something. You’ve probably seen advertisements trying to exploit this vulnerability:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“Offer valid only for the next 24 hours!”&lt;/li&gt;
+  &lt;li&gt;“Call now to get a 20% discount!”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Make no mistake, this is just as much social engineering as the above examples. Exploiting &lt;strong&gt;urgency&lt;/strong&gt; can often multiply the chances of making the victim do something that they wouldn’t have done otherwise.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-curiosity&quot;&gt;#4 Curiosity&lt;/h3&gt;
+
+&lt;p&gt;The most obvious example of exploiting our curiosity is &lt;strong&gt;clickbait&lt;/strong&gt;. You’ve definitely seen titles such as these:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Top 5 things YOU NEED TO KNOW about [insert something useless]!&lt;/li&gt;
+  &lt;li&gt;You won’t believe what happened next!!&lt;/li&gt;
+  &lt;li&gt;#3 will blow your mind!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most people will be aware that a 51 year old can’t just peel her face off and become 25 years old and yet we have this:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/the-art-of-human-hacking/curiosity.jpg&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			No. Dermatologists don't hate her.
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;They’re not trying to be factually correct, they’re not even attempting to provide you any value. They have one goal, do whatever it takes to get you to click. And if the front page of websites like &lt;a href=&quot;https://www.buzzfeed.com&quot;&gt;BuzzFeed&lt;/a&gt; or even &lt;a href=&quot;https://www.youtube.com/&quot;&gt;YouTube&lt;/a&gt; is any indication, the effectiveness of clickbait is astounding. And this makes our curiosity one of the most exploited human traits of all.&lt;/p&gt;
+
+&lt;p&gt;Now let’s check out the next vulnerability. &lt;del&gt;It will blow your mind&lt;/del&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-sympathy&quot;&gt;#5 Sympathy&lt;/h3&gt;
+
+&lt;p&gt;We might not think of sympathy as a weakness, but even when we’re at our most humble and kind, there are those who will try to exploit it. Here’s an example:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/the-art-of-human-hacking/sympathy.jpg&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;I assure you, the attacker definitely did not write this with tears in his eyes. Again, this type of attack is mainly targeted at the naïve, but it could be particularly dangerous if you see something like this coming from someone you know. If an attacker takes control of an email account, they’ll be able to send such emails to everyone in the victim’s contact list.&lt;/p&gt;
+
+&lt;p&gt;If you see the above email coming from someone you know, what would you do? When we see a message from a known person, we immedietaly let our guard down. We don’t expect our friends or colleagues to try to defraud and scam us. And this provides yet another vulnerability for an attacker to exploit.&lt;/p&gt;
+
+&lt;h3 id=&quot;6-respect-for-authority&quot;&gt;#6 Respect for Authority&lt;/h3&gt;
+
+&lt;p&gt;Your TV stops working. You call the TV guy. In a while, a person that looks like a TV guy shows up at your door. How often do people check their TV guy’s identification? (By the way, this is pretty much the plot of &lt;a href=&quot;https://www.youtube.com/watch?v=5Eyw-Qiwpj0&quot;&gt;&lt;em&gt;The Italian Job&lt;/em&gt;&lt;/a&gt;, a movie that draws heavily from social engineering)&lt;/p&gt;
+
+&lt;p&gt;When a person looks and acts in a specific manner, we automatically begin to form expectations, an image in our minds based on our past experiences. And this gives rise to yet another form of phishing:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/the-art-of-human-hacking/respectforauthority.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;Looks pretty convincing, doesn’t it? There are no obvious red flags here, the grammar, the logos, even an unsubscribe link- this could very well appear genuine to the untrained eye. Combined with the fact that most people probably don’t know what their local police department’s website URL is, this attack can prove to be quite dangerous.&lt;/p&gt;
+
+&lt;h3 id=&quot;7-inattention&quot;&gt;#7 Inattention&lt;/h3&gt;
+
+&lt;p&gt;Nearly all social engineering attacks can be defended against if only we remain constantly vigilant. Every single attack above relies on you not looking too closely at something, like the URL in a phishing attack. Even real-life scams and frauds count on you being ill-informed, inattentive and gullible.&lt;/p&gt;
+
+&lt;p&gt;Your browser might warn you if a website looks malicious, your email service might smartly put the most obvious attacks in your spam folder, but in the end, &lt;strong&gt;you stand alone&lt;/strong&gt;. It is up to you to learn how to better protect yourself against whatever the internet (and beyond) can throw at you.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;So these were the seven deadly sins of social engineering. By being aware of your weakness, you’ll be better able to defend yourself against all kinds of social engineering attacks. And now we’re going to learn how to carry out these attacks ourselves.&lt;/p&gt;
+
+&lt;p&gt;It’s time to pack your bags and head out because we are going on a trip. &lt;em&gt;&lt;a href=&quot;/phishing-with-a-rogue-wifi-access-point&quot;&gt;A phishing trip&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="attack" /></entry><entry><title type="html">Introduction to Social Engineering</title><link href="http://xeushack.com/introduction-to-social-engineering" rel="alternate" type="text/html" title="Introduction to Social Engineering" /><published>2017-03-21T06:30:25+05:30</published><updated>2017-03-21T06:30:25+05:30</updated><id>http://xeushack.com/introduction-to-social-engineering</id><content type="html" xml:base="http://xeushack.com/introduction-to-social-engineering">&lt;p&gt;Most of the time when we’re thinking about security of information systems, we’re usually only concerned with digital security. And in doing so, we leave open the biggest vulnerabilities of all: Humans. Some of the biggest hacks of all time were made possible by social engineering.&lt;/p&gt;
+
+&lt;p&gt;The aim of the following few tutorials is to get you thinking about how we as humans are ultimately the weakest links in even the most secure systems. We’re going to take a look at a few human behaviors which make us vulnerable to social engineering. These are things that we all have in common, behaviors and characteristics we all possess, things that you may never have thought of as a weakness. When it comes to exploiting humans, the very things that make us human also make us vulnerable.&lt;/p&gt;
+
+&lt;p&gt;Social engineering is nothing new. In fact, as we’ll see in a minute, it is literally thousands of years old. Social engineering is everywhere and it goes far beyond hacking.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The infomercials on the TV trying to sell you something&lt;/li&gt;
+  &lt;li&gt;Children guilting their parents into buying them a toy&lt;/li&gt;
+  &lt;li&gt;An email from the Nigerian Prince promising you riches&lt;/li&gt;
+  &lt;li&gt;A bank robber with a fake gun hidden under a cloth&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All these and more come under the domain of social engineering. Now let us begin our journey by starting at the very beginning.&lt;/p&gt;
+
+&lt;h2 id=&quot;history-of-social-engineering&quot;&gt;History of Social Engineering&lt;/h2&gt;
+
+&lt;p&gt;The Trojan Horse is a classic example of social engineering at it’s best. To understand it’s genius, we need to go back to 1188 BC.&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/introduction-to-social-engineering/trojan-war.jpg&quot; alt=&quot;A depiction of the Trojan war&quot; title=&quot;A depiction of the Trojan war&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Trojan_War&quot;&gt;Trojan war&lt;/a&gt; is coming to an end. After a fruitless 10 year long siege on the city of Troy, the Greeks decided to get creative. They constructed a huge wooden horse and filled it with a select force of men and left it as an offering to the city. Then they promptly pretended to sail away. The Trojans retrieved the horse, dragging it into the walled fortress as a symbol of their victory. As the day came to an end, the soldiers emerged from the Trojan horse and got to work. Under the cover of night, the rest of the Greek army had sailed back and were greeted by open doors. The city was conquered.&lt;/p&gt;
+
+&lt;p&gt;It became a major and decisive victory for the Greeks and it was all because of a trick. The Greeks had fooled the Trojans into thinking that were making a gesture of goodwill, a token of defeat. In reality however, they were relying on the Trojans letting their guard down and being foolish enough to think that the Greeks had indeed surrendered.&lt;/p&gt;
+
+&lt;p&gt;The Trojan war was won by a social engineering attack. And the rest is now history.&lt;/p&gt;
+
+&lt;p&gt;This is a common pattern that we’ll see over and over in different social engineering techniques. It all hinges on the attacker’s ability to make the victim believe something while making it seem like the victim is the one in control. And when the victim is at their most vulnerable, the attacker’s true intentions are revealed.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-social-engineering&quot;&gt;What is Social Engineering?&lt;/h2&gt;
+
+&lt;p&gt;Social engineering is the psychological manipulation of people into performing actions or divulging confidential information for the attacker. &lt;span class=&quot;shareable&quot;&gt;Social engineering is exploiting flaws in human beings&lt;/span&gt;, making the victim do things that they wouldn’t otherwise have done. Social engineering is an attack vector, a means to an end; It is not the goal but a way to get there.&lt;/p&gt;
+
+&lt;p&gt;Humans are the &lt;strong&gt;soft center within the hard shells&lt;/strong&gt; of all modern security systems. Cracking the humans is often a lot easier than cracking these systems.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Firewalls:&lt;/strong&gt; Hardly any operating systems today come without a built-in firewall. You can find them in servers, in desktops and in routers. There are even dedicated firewall devices for protecting corporate networks. Security firms spend a huge amount of money on developing firewalls and for good reason. Firewalls form the first line of defense, the hard shell that a hacker must break through in order to gain access to a system.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Authorization Rules:&lt;/strong&gt; Your pins and passwords (and fingerprints) are what give you access to your devices and all your online accounts. Authorization is the cornerstone of digital security. Unless you can prove your identity you are denied access to the system, thwarting any attacks before they can even begin. This is what keeps your Gmail and Facebook accounts secure.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Anti-virus:&lt;/strong&gt; Anti-viruses have become a necessity on popular, commonly targeted operating systems such as Microsoft Windows. The job of an anti-virus is to know common malicious software patterns, to watch out for any suspicious files that matches these patterns and to catch them before any damage is done.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These three in particular are a rather common sight in almost all security systems. They are the default security controls in place on the vast majority of systems today. And this is where social engineering comes in. Within these hard shells are the vulnerable humans. The people inside the protection of these security measures who have legitimate access to use the protected system freely, potentially bypassing their otherwise impenetrable shields. &lt;span class=&quot;shareable&quot;&gt;Break the human and you break the system&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;A company can spend hundreds of thousands of dollars on firewalls, intrusion detection systems and encryption and other security technologies, but if an attacker can call one trusted person within the company, and that person complies, and if the attacker gets in, then all that money spent on technology is essentially wasted.&lt;/p&gt;
+
+&lt;p&gt;And this is just what social engineering is: How can the vulnerable humans be exploited to circumvent even the toughest of security measures. Our first step is to better understand the security holes before we can begin exploiting it. Let’s head over to the next one and learn more about &lt;a href=&quot;/the-art-of-human-hacking&quot;&gt;the weaknesses of humans&lt;/a&gt;.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="attack" /></entry><entry><title type="html">How to spoof your MAC Address on a Mac (OS X)</title><link href="http://xeushack.com/how-to-spoof-your-mac-address-on-mac-os-x" rel="alternate" type="text/html" title="How to spoof your MAC Address on a Mac (OS X)" /><published>2017-03-14T06:49:25+05:30</published><updated>2017-03-14T06:49:25+05:30</updated><id>http://xeushack.com/how-to-spoof-your-mac-address-on-mac-os-x</id><content type="html" xml:base="http://xeushack.com/how-to-spoof-your-mac-address-on-mac-os-x">&lt;p&gt;I recommend you first learn about &lt;a href=&quot;/mac-addresses&quot;&gt;MAC addresses&lt;/a&gt; and &lt;a href=&quot;/what-is-mac-address-spoofing&quot;&gt;spoofing&lt;/a&gt; before continuing. We’re going to take a look at how we can edit (spoof) the MAC address on OS X. (You can also spoof your MAC address on &lt;a href=&quot;/how-to-spoof-your-mac-address-on-windows&quot;&gt;Windows&lt;/a&gt; and &lt;a href=&quot;/how-to-spoof-your-mac-address-on-android-devices&quot;&gt;Android devices&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;step-1-open-up-network-settings&quot;&gt;Step 1: Open up network settings&lt;/h3&gt;
+
+&lt;p&gt;Open up &lt;strong&gt;System Preferences&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Network&lt;/strong&gt; and then click on the &lt;strong&gt;Advanced&lt;/strong&gt; button. Make sure you’ve selected the appropriate interface first (e.g: WiFi, Ethernet etc.)&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/how-to-spoof-your-mac-address-on-mac-os-x/network-settings.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;step-2-figure-out-the-factory-set-mac-address&quot;&gt;Step 2: Figure out the factory-set MAC address&lt;/h3&gt;
+
+&lt;p&gt;Now click on the &lt;strong&gt;Hardware&lt;/strong&gt; tab.&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/how-to-spoof-your-mac-address-on-mac-os-x/adapter-settings.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;This is your ‘real’ MAC address. Keep this window open, we’ll need it in a bit&lt;/p&gt;
+
+&lt;h3 id=&quot;step-3-change-the-mac-address&quot;&gt;Step 3: Change the MAC address&lt;/h3&gt;
+
+&lt;p&gt;Now we need to figure out what our interface is called. Say, you picked Wi-Fi above, to change it’s MAC address, we need to know what OS X calls that interface.&lt;/p&gt;
+
+&lt;p&gt;Open up the terminal and type in the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig en0 | grep ether
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This gives us the MAC address of the &lt;code class=&quot;highlighter-rouge&quot;&gt;en0&lt;/code&gt; interface. Now check and see if it’s the same MAC address as in the previous network settings window that we left open. A system may have several of these interfaces, so we’ll have to check each one to see which one matches. You may have to run the commands for multiple interfaces like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig en1 | grep ether
+ifconfig en2 | grep ether
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And so on for &lt;code class=&quot;highlighter-rouge&quot;&gt;en3&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;en4&lt;/code&gt;. Most systems don’t have that many networking adapters, so it shouldn’t take more than two or three tries. One of these commands should definitely give you a MAC address that matches with our interface. This is the one we want to change.&lt;/p&gt;
+
+&lt;p&gt;Now before proceeding, disconnect from the network you’re connected to. For example, if you’re trying to change your Wi-Fi MAC address, disconnect from Wi-Fi.&lt;/p&gt;
+
+&lt;p&gt;Say that our interface is called &lt;code class=&quot;highlighter-rouge&quot;&gt;en0&lt;/code&gt;, now we can change the MAC address with the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo ifconfig en0 ether xx:xx:xx:xx:xx:xx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You need to have administrator privileges to run this command. The command will ask you to enter a password, unless you’re logged in as Admin. Here’s what it looks like:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/how-to-spoof-your-mac-address-on-mac-os-x/terminal.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;And this is how you &lt;span class=&quot;shareable&quot;&gt;change your MAC on your Mac.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Your MAC address has now been spoofed. You can now reconnect to your network and your computer will now use the new MAC address.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="networking" /><category term="osx" /></entry><entry><title type="html">How to spoof your MAC Address on Windows</title><link href="http://xeushack.com/how-to-spoof-your-mac-address-on-windows" rel="alternate" type="text/html" title="How to spoof your MAC Address on Windows" /><published>2017-03-14T06:42:25+05:30</published><updated>2017-03-14T06:42:25+05:30</updated><id>http://xeushack.com/how-to-spoof-your-mac-address-on-windows</id><content type="html" xml:base="http://xeushack.com/how-to-spoof-your-mac-address-on-windows">&lt;p&gt;Now that we know what &lt;a href=&quot;/mac-addresses&quot;&gt;MAC addresses&lt;/a&gt; are and &lt;a href=&quot;/what-is-mac-address-spoofing&quot;&gt;what MAC spoofing is&lt;/a&gt;, let us take a look at how we can spoof our MAC address on Windows. (You can also spoof your MAC address on &lt;a href=&quot;/how-to-spoof-your-mac-address-on-mac-os-x&quot;&gt;OS X&lt;/a&gt; and &lt;a href=&quot;/how-to-spoof-your-mac-address-on-android-devices&quot;&gt;Android devices&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;step-1&quot;&gt;Step 1&lt;/h3&gt;
+
+&lt;p&gt;Open up device manager from the control panel&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/how-to-spoof-your-mac-address-on-windows/control-panel.png&quot; alt=&quot;Open device manager from the control panel&quot; title=&quot;Open device manager from the control panel&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;step-2&quot;&gt;Step 2&lt;/h3&gt;
+
+&lt;p&gt;Expand ‘Network Adapters’ and right click the adapter you wish to change the MAC address for. Choose ‘Properties’&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/how-to-spoof-your-mac-address-on-windows/device-manager.png&quot; alt=&quot;Device manager with network adapters expanded showing the various adapters on the system&quot; title=&quot;Device manager with network adapters expanded showing the various adapters on the system&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;step-3&quot;&gt;Step 3&lt;/h3&gt;
+
+&lt;p&gt;Under the Advanced tab, click on a property named ‘Network Address’ or ‘Locally Administered Address’. Type in your new MAC address under ‘Value’.&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/how-to-spoof-your-mac-address-on-windows/adapter-settings.png&quot; alt=&quot;Properties of an adapter, showing the advanced tab open. A custom MAC address can be typed in here&quot; title=&quot;Properties of an adapter, showing the advanced tab open. A custom MAC address can be typed in here&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;And we’re done! You can confirm that it worked by using the command &lt;code class=&quot;highlighter-rouge&quot;&gt;ipconfig /all&lt;/code&gt; which outputs:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Wireless LAN adapter Wi-Fi:
+
+   Connection-specific DNS Suffix  . : domain.name
+   Description . . . . . . . . . . . : Intel(R) Dual Band Wireless-AC 3160
+   Physical Address. . . . . . . . . : 24-1B-A1-8A-56-B8
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::29e1:1a9d:314b:1eb9%3(Preferred)
+   IPv4 Address. . . . . . . . . . . : 192.168.1.3(Preferred)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Your new MAC address should now be displayed here (Physical Address) and MAC spoofing is complete. To undo any changes, simply click &lt;strong&gt;Note present&lt;/strong&gt; under the same property that you edited.&lt;/p&gt;
+
+&lt;p&gt;Recently, Windows and Intel have been trying to restrict this practice by not supporting custom MAC addresses for some adapters. If you are unable to find &lt;strong&gt;Network Address&lt;/strong&gt; or &lt;strong&gt;Locally Administered Address&lt;/strong&gt; in the properties of your adapter, then you will have to look for a custom method for enabling MAC spoofing for your adapter.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="networking" /><category term="windows" /></entry><entry><title type="html">How to spoof your MAC Address on Android Devices</title><link href="http://xeushack.com/how-to-spoof-your-mac-address-on-android-devices" rel="alternate" type="text/html" title="How to spoof your MAC Address on Android Devices" /><published>2017-03-14T06:38:25+05:30</published><updated>2017-03-14T06:38:25+05:30</updated><id>http://xeushack.com/how-to-spoof-your-mac-address-on-android-devices</id><content type="html" xml:base="http://xeushack.com/how-to-spoof-your-mac-address-on-android-devices">&lt;p&gt;Now that we know what &lt;a href=&quot;/mac-addresses&quot;&gt;MAC addresses&lt;/a&gt; are and &lt;a href=&quot;/what-is-mac-address-spoofing&quot;&gt;what MAC spoofing is&lt;/a&gt;, let us take a look at how we can alter our Android device’s MAC address. (You can also do this on &lt;a href=&quot;/how-to-spoof-your-mac-address-on-windows&quot;&gt;Windows&lt;/a&gt; as well as &lt;a href=&quot;/how-to-spoof-your-mac-address-on-mac-os-x&quot;&gt;OS X&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-find-out-your-original-mac-address-on-android&quot;&gt;How to find out your original MAC address on Android?&lt;/h2&gt;
+
+&lt;p&gt;First of all, let’s start off by finding out our original MAC address. Later on, we can use this to switch back to our “real” MAC address after spoofing.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Open up &lt;strong&gt;Settings&lt;/strong&gt; on your phone&lt;/li&gt;
+  &lt;li&gt;Go to &lt;strong&gt;About Device&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;And finally, &lt;strong&gt;Status&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Now scroll down and find the MAC Address.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/how-to-spoof-your-mac-address-on-android-devices/android-settings.png&quot; alt=&quot;Screenshots showing where to find the MAC address of an Android device&quot; title=&quot;Screenshots showing where to find the MAC address of an Android device&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;There’s a few different ways to spoof MAC addresses, we’re going to follow a method that can be done entirely on the Android device (no PC needed). Now, there’s a couple things you need to do before you can begin:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You need a &lt;a href=&quot;/rooting-your-android-phone&quot;&gt;rooted android phone&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Install &lt;a href=&quot;https://play.google.com/store/apps/details?id=stericson.busybox&quot;&gt;BusyBox&lt;/a&gt; and the &lt;a href=&quot;https://play.google.com/store/apps/details?id=jackpal.androidterm&quot;&gt;Terminal&lt;/a&gt; app&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And now we can begin.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-1-open-up-the-terminal-app-and-type-in-the-following-command&quot;&gt;Step 1. Open up the terminal app and type in the following command:&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;busybox iplink show eth0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This will show your current MAC address.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-2-change-the-mac-address&quot;&gt;Step 2. Change the MAC address&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;busybox ifconfig eth0 hw ether XX:XX:XX:XX:XX:XX
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;*Replace &lt;code class=&quot;highlighter-rouge&quot;&gt;XX:XX:XX:XX:XX:XX&lt;/code&gt; with whatever MAC address you wish to use.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-3-celebrate&quot;&gt;Step 3. Celebrate&lt;/h3&gt;
+
+&lt;p&gt;Once again, check your MAC address.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;busybox iplink show eth0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And that’s it!. Now you should see your new MAC address instead of the original one. You have successfully spoofed your MAC address and now this is the address that’ll be used by your device for any communication with other devices.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="networking" /><category term="mobile" /><category term="android" /></entry><entry><title type="html">What is MAC Address Spoofing?</title><link href="http://xeushack.com/what-is-mac-address-spoofing" rel="alternate" type="text/html" title="What is MAC Address Spoofing?" /><published>2017-03-14T06:30:25+05:30</published><updated>2017-03-14T06:30:25+05:30</updated><id>http://xeushack.com/what-is-mac-address-spoofing</id><content type="html" xml:base="http://xeushack.com/what-is-mac-address-spoofing">&lt;p&gt;Read &lt;a href=&quot;/mac-addresses&quot;&gt;this one&lt;/a&gt; first to you fully understand how MAC addresses work.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-mac-address-spoofing&quot;&gt;What is MAC address spoofing?&lt;/h2&gt;
+
+&lt;p&gt;The device that you’re looking at right now has a network interface controller (NIC), the thing that’s responsible for allowing you to connect to a network, like the internet. All devices capable of networking (smartphones, laptops, routers) have one of these. Each NIC is assigned a unique hard-coded MAC addresses that cannot be changed.&lt;/p&gt;
+
+&lt;p&gt;However, almost all popular platform such as Windows or OS X or Linux (and hence Android) support &lt;em&gt;changing&lt;/em&gt; MAC addresses and pretty easily too. Just because we cannot change the MAC address built into our NIC doesn’t mean we can’t make other devices think that our MAC addresses is something different. Whatever information leaves our device is in our control. And in the header of the packets that make up our data is the address of our device, the MAC address (along with IP and a bunch of other information).&lt;/p&gt;
+
+&lt;p&gt;So, our operating systems allow us to instruct the NIC to ignore the built-in MAC address and instead use our own custom MAC address which could be anything we want it to be. This is called &lt;strong&gt;MAC spoofing&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-mac-spoofing-used-for&quot;&gt;What is MAC spoofing used for?&lt;/h2&gt;
+
+&lt;p&gt;&lt;span class=&quot;shareable&quot;&gt;MAC spoofing is awesome&lt;/span&gt;. We’re interested in MAC spoofing because it allows us to make other devices think that we are someone else. For a hacker, this opens up a variety of attack vectors:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It allows us to perform man-in-the-middle attacks&lt;/li&gt;
+  &lt;li&gt;It can help us hack Wi-Fi networks&lt;/li&gt;
+  &lt;li&gt;It lets us directly target devices connected to our Local Area Network (LAN)&lt;/li&gt;
+  &lt;li&gt;If you’ve been banned from using a public Wi-Fi hotspot, MAC spoofing allows you to trick the router into thinking that you are some other device.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are a couple of completely legitimate (read: white hat) reasons for MAC spoofing as well:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Setting up numerous virtual machines in a corporate environment, each with a randomly assigned MAC address.&lt;/li&gt;
+  &lt;li&gt;It can be used for improving anonymity (An unsafe local network can track you using your MAC address. If your MAC address keeps changing, they can’t do that anymore).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Consider an example. Say you’re using Wi-Fi and you’re friend is also connected to the same network. Now, when you first connect to a Wi-Fi access point (the router), you exchange some information with the router. You request a connection from the router, enter the password and if successful, the router responds by opening a connection for you. Now the router knows who you are (your MAC address) and you know who the router is (it’s MAC address).&lt;/p&gt;
+
+&lt;p&gt;Now, if you spoof your MAC address to look like the router’s MAC address you could make the friend think that he’s talking with the router when instead all his network traffic is going through your device. This is an example of a man-in-the-middle attack and this technique can allow you to snoop on unencrypted traffic (HTTP), redirect the user to some other websites or replace all the images they see with photos of cats if you want to.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Can a website detect your real MAC address?&lt;/strong&gt; No. MAC addresses are a restricted to the local network segment. For example, they are only used by a router to distinguish different devices connected to it, but the MAC address is never sent from the router to the internet.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-spoof-your-mac-address&quot;&gt;How to spoof your MAC address?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/how-to-spoof-your-mac-address-on-windows&quot;&gt;On Windows&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/how-to-spoof-your-mac-address-on-android-devices&quot;&gt;On Android&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/how-to-spoof-your-mac-address-on-mac-os-x&quot;&gt;On Mac (OS X)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="networking" /></entry><entry><title type="html">Information Gathering with theHarvester</title><link href="http://xeushack.com/information-gathering-with-theharvester" rel="alternate" type="text/html" title="Information Gathering with theHarvester" /><published>2017-03-11T06:39:25+05:30</published><updated>2017-03-11T06:39:25+05:30</updated><id>http://xeushack.com/information-gathering-with-theharvester</id><content type="html" xml:base="http://xeushack.com/information-gathering-with-theharvester">&lt;p&gt;&lt;strong&gt;theHarvester&lt;/strong&gt; is a tool for gathering publicly searchable information on your targets which could be anything from individuals to websites to companies. theHarvester can find e-mail accounts, subdomain names, virtual hosts, open ports and banners, and employee names from different public sources.&lt;/p&gt;
+
+&lt;p&gt;It is an easy-to-use &lt;a href=&quot;https://github.com/laramies/theHarvester&quot;&gt;open source&lt;/a&gt; tool built in python by Christian Martorella. It is one of the pre-installed packages in Kali Linux and a part of almost every hacker’s toolkit.&lt;/p&gt;
+
+&lt;p&gt;Now let’s stop talking about it and start using it. Since it is just a python program, theHarvester can run on anything that can run python. I recommended you use Kali Linux (since it’s built in), but if you want to, you can install it on Windows as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-install-theharvester-on-windows&quot;&gt;How to install theHarvester on Windows?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Install python&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Head over to the github repository and &lt;a href=&quot;https://github.com/laramies/theHarvester/releases&quot;&gt;download theHarvester’s source code&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We need to install a dependency, the &lt;code class=&quot;highlighter-rouge&quot;&gt;requests&lt;/code&gt; library which is needed by theHarvester. Run the following command:&lt;/p&gt;
+
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;And that’s it. You should now be able to run theHarvester by referencing the python file from the command line:&lt;/p&gt;
+
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;theHarvester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-use-theharvester&quot;&gt;How to use theHarvester?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;First of all ensure that theHarvester is installed by running the following in a Kali terminal:&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;theharvester
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;P.S: For windows, use &lt;code class=&quot;highlighter-rouge&quot;&gt;theHarvester.py&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;theharvester&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You should see something like this:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/information-gathering-with-theharvester/theHarvester1.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;We see a bunch of options that we can use with the command along with a few examples. Let’s try running a command now. I want to see what comes up for &lt;code class=&quot;highlighter-rouge&quot;&gt;XeusHack.com&lt;/code&gt; using Google.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;theharvester -d xeushack.com -l 100 -b google
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This outputs:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/information-gathering-with-theharvester/theHarvester2.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;Hmm, nothing except the server’s IP address. &lt;em&gt;Perfect&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;By using the &lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt; parameter we can also save a nicely formatted output to an HTML or XML file:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;theharvester -d xeushack.com -l 100 -b google -f xeus
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This saves a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;xeus.html&lt;/code&gt; in the same directory where the terminal is. Here’s what it looks like:&lt;/p&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/information-gathering-with-theharvester/theHarvester3.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;Now let’s try another, this time &lt;code class=&quot;highlighter-rouge&quot;&gt;kali.org&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;theharvester -d kali.org -l 100 -b google
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;img_holder&quot;&gt;
+
+	&lt;img class=&quot;post_img&quot; src=&quot;/assets/img/posts/information-gathering-with-theharvester/theHarvester4.png&quot; alt=&quot;&quot; title=&quot;&quot; /&gt;
+	
+	
+	&lt;div class=&quot;caption&quot;&gt;
+		&lt;em&gt;
+			
+		&lt;/em&gt;
+	&lt;/div&gt;
+	
+
+&lt;/div&gt;
+
+&lt;p&gt;Now we got a bit more data. We see a couple of email addresses and a bunch of subdomains. Now this isn’t all that surprising, all of these are publicly searchable and the developers of Kali.org want them to be searchable. You can bet that &lt;code class=&quot;highlighter-rouge&quot;&gt;kali.org&lt;/code&gt; is a pretty secure website, but the same might not be said about some small company’s website. An indie developer or a small business may not have taken all the precautions to keep their website safe. In this case, the information that theHarvester turns up could be used to attack them.&lt;/p&gt;
+
+&lt;p&gt;To understand how theHarvester could be used in a real-life setting, let us drift away for a moment and read a short story. This is the story of &lt;strong&gt;Billy&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-misadventures-of-billy&quot;&gt;The Misadventures of Billy&lt;/h3&gt;
+
+&lt;p&gt;Who’s Billy you say? Billy was just an average guy with big dreams. Billy was interested in learning how to set up his own website. So he googled “&lt;a href=&quot;https://www.google.com/search?q=how+to+create+a+free+website&quot;&gt;how to create a website&lt;/a&gt;” and arrived at &lt;a href=&quot;https://wordpress.org/&quot;&gt;WordPress.org&lt;/a&gt;. He got a domain &lt;code class=&quot;highlighter-rouge&quot;&gt;something.com&lt;/code&gt; along with hosting. But Billy was just starting out and didn’t want to make the website live until he was satisfied with it. So instead he sets up WordPress on a subdomain &lt;code class=&quot;highlighter-rouge&quot;&gt;test.something.com&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;A few weeks go by and Billy is now happy with his website. Ready to take the world by storm, Billy copies his WordPress installation over to &lt;code class=&quot;highlighter-rouge&quot;&gt;something.com&lt;/code&gt; and lives happily ever after.&lt;/p&gt;
+
+&lt;p&gt;Not so fast. If you’re familiar with WordPress you’ll know that it’s often plagued by numerous security holes. To keep your WordPress website safe, you need to constantly update the core as well as all the plugins you use.&lt;/p&gt;
+
+&lt;p&gt;But Billy forgot about the instance of wordpress still running on &lt;code class=&quot;highlighter-rouge&quot;&gt;test.something.com&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now a hacker comes along and runs:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;theharvester -d something.com -l 100 -b google
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;He sees Billy’s suspicious subdomain, goes to it and finds a now outdated and unsecure installation of WordPress. And the rest is history. Because of one small mistake, the hacker gained access to the server and wiped away everything.&lt;/p&gt;
+
+&lt;p&gt;All of Billy’s hard work was gone. Just like that.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;back-to-theharvester&quot;&gt;Back to theHarvester…&lt;/h3&gt;
+
+&lt;p&gt;The moral of the story is that all a hacker needs is one tiny oversight, the smallest of security holes, and a system is rendered defenseless. This is what makes theHarvester useful. The reconnaissance stage of hacking is devoted to following this trail of breadcrumbs that lead to a vulnerability.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;shareable&quot;&gt;Information is our best weapon&lt;/span&gt;. Information about a target can mean the difference between quickly exploiting a system and a long and fruitless hacking attempt. theHarvester can also help us with social engineering. For example, it could give us the private email addresses of a company. This could be used for a phishing campaign or even for a direct attack if the company isn’t so strict on &lt;a href=&quot;/choosing-a-strong-password-in-2017&quot;&gt;password strength&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I recommend you play around with theHarvester, try out all the options, look up your favorite websites and see what you find. Get used to it and make it a part of your go-to hacking toolset. It should definitely be one of the first tools you run when getting to know a new target.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Below I’ve included some information about the sources of data used by theHarvester, you’ll likely find this useful when working with it:&lt;/p&gt;
+
+&lt;h2 id=&quot;passive-sources&quot;&gt;Passive Sources&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Google:&lt;/strong&gt; Google search engine  - www.Google.com&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;GoogleCSE:&lt;/strong&gt; Google custom search engine&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Google-Profiles:&lt;/strong&gt; Google search engine, specific search for Google profiles&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bing:&lt;/strong&gt; microsoft search engine  - www.bing.com&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bing API:&lt;/strong&gt; microsoft search engine, through the API (you need to add your Key in  the discovery/bingsearch.py file)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DogPile:&lt;/strong&gt; Dogpile search engine - www.dogpile.com&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PGP:&lt;/strong&gt; pgp key server - mit.edu&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Linkedin:&lt;/strong&gt; Google search engine, specific search for Linkedin users&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;vhost:&lt;/strong&gt; Bing virtual hosts search&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Twitter:&lt;/strong&gt; twitter accounts related to an specific domain (uses Google search)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Google+:&lt;/strong&gt; users that works in target company (uses Google search)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Yahoo:&lt;/strong&gt; Yahoo search engine&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Baidu:&lt;/strong&gt; Baidu search engine&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Shodan:&lt;/strong&gt; Shodan Computer search engine, will search for ports and banner of the discovered hosts  (&lt;a href=&quot;http://www.shodanhq.com/&quot;&gt;ShodanHQ.com&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;active-sources&quot;&gt;Active Sources&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;DNS brute force:&lt;/strong&gt; this plugin will run a dictionary brute force enumeration&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DNS reverse lookup:&lt;/strong&gt; reverse lookup of ip´s discovered in order to find hostnames&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DNS TDL expansion:&lt;/strong&gt; TLD dictionary brute force enumeration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;modules-that-need-api-keys-to-work&quot;&gt;Modules that need API keys to work:&lt;/h2&gt;
+
+&lt;p&gt;Since theHarvester makes use of third party information sources, some of these require you to have API keys to work. That is, you need to go and sign up for the specific service, register your app with them and they provide you with a key that lets you access the service. Only the following two need API keys:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;GoogleCSE&lt;/strong&gt;: You need to create a Google Custom Search engine(CSE), and add your Google API key and CSE ID to the file: &lt;code class=&quot;highlighter-rouge&quot;&gt;discovery/GoogleCSE.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Shodan&lt;/strong&gt;: Add your API key in &lt;code class=&quot;highlighter-rouge&quot;&gt;discovery/shodansearch.py&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Xeus_Hack&quot;}</name></author><category term="networking" /><category term="attack" /><category term="recon" /></entry></feed>
