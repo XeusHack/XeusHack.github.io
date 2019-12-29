@@ -16,9 +16,11 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    eventmachine (1.2.3)
     eventmachine (1.2.3-x64-mingw32)
     fast-stemmer (1.0.2)
-    ffi (1.9.18-x64-mingw32)
+    ffi (1.11.3)
+    ffi (1.11.3-x64-mingw32)
     forwardable-extended (2.6.0)
     hawkins (2.0.5)
       em-websocket (~> 0.5)
@@ -64,6 +66,7 @@ GEM
     sass (3.4.23)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
